@@ -1,0 +1,9 @@
+version: "3.0"
+services:
+  frontend:
+    build: docker/react
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src/frontend:/app
+    entrypoint: ["npm", "start"]
