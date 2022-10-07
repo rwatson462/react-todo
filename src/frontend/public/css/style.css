@@ -1,0 +1,123 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
+
+html {
+    font-size: 16px;
+}
+
+body, input, button {
+    font-size: 1rem;
+    font-family: 'Montserrat';
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Poppins';
+}
+
+body {
+    width: 700px;
+    margin: 5rem auto 0 auto;
+    border: 5px solid #eee;
+    border-radius: 1rem;
+    box-shadow: 0.5rem 0.5rem #ddd;
+}
+
+h1 {
+    margin: 0;
+}
+
+header {
+    padding: 2rem;
+    padding-bottom: 0;
+}
+
+section, nav {
+    padding: 0 2rem;
+}
+
+nav {
+    background-color: #eee;
+    margin: 1rem -1px;
+    user-select: none;
+}
+
+section ul, nav ul {
+    margin: 0;
+    padding: 1rem 0;
+    list-style: none;
+}
+
+section ul li {
+    line-height: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+section ul li:hover {
+    background-color: #eee;
+    border-radius: 0.25rem;
+}
+
+nav ul {
+    display: flex;
+    column-gap: 1rem;
+    justify-content: space-evenly;
+}
+
+.todo-name {
+    flex-grow: 1;
+}
+
+.checkbox, .todo-delete {
+    cursor: pointer;
+}
+
+li.deleted span.todo-name {
+    text-decoration: line-through;
+}
+li.deleted {
+    opacity: 0.3;
+}
+li.complete {
+    opacity: 0.5;
+}
+
+form {
+    display: flex;
+    column-gap: 1rem;
+    justify-content: space-between;
+    border-top: 5px solid #eee;
+    padding: 2rem;
+    margin: 0 -1px;
+}
+
+form>* {
+    flex-grow: 1;
+}
+
+input, button {
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background-color: #fafafa;
+    outline: none;
+}
+
+input:focus, button:active {
+    background-color: #eee;
+}
+
+input:hover, button:hover {
+    background-color: #f4f4f4;
+}
+
+button {
+    cursor: pointer;
+    box-shadow: 2px 2px #ddd;
+}
+button:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
