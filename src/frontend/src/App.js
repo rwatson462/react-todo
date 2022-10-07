@@ -6,6 +6,7 @@ import TodoList from './Components/TodoList'
 import {TodoReducerBuilder} from './Hooks/TodoReducer'
 import NewTodoForm from './Components/NewTodoForm'
 import NavBar from './Components/NavBar'
+import ProgressBar from './Components/ProgressBar'
 
 const App = () => {
     const [displayOptions, setDisplayOptions] = useState({
@@ -50,6 +51,11 @@ const App = () => {
         })
     }
 
+    // maximum value of the progres bar is the total number of non-deleted Todos
+    const progressBarMax = todos.reduce((count, todo) => count + (!todo.deleted ? 1 : 0), 0)
+    // current value of the progress bar based on completed and not deleted Todos
+    const progressBarValue = todos.reduce((count, todo) => count + (todo.complete && !todo.deleted ? 1 : 0), 0)
+
     return <>
         <HeaderBar />
         <NavBar
@@ -57,6 +63,10 @@ const App = () => {
             toggleHideComplete={() => updateDisplayOptions('hideComplete')}
             hideDeleted={displayOptions.hideDeleted}
             toggleHideDeleted={() => updateDisplayOptions('hideDeleted')}
+        />
+        <ProgressBar
+            max={progressBarMax}
+            progress={progressBarValue}
         />
         <TodoList
             todos={todos}
