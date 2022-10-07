@@ -53,8 +53,16 @@ const App = () => {
 
     // maximum value of the progres bar is the total number of non-deleted Todos
     const progressBarMax = todos.reduce((count, todo) => count + (!todo.deleted ? 1 : 0), 0)
+
     // current value of the progress bar based on completed and not deleted Todos
     const progressBarValue = todos.reduce((count, todo) => count + (todo.complete && !todo.deleted ? 1 : 0), 0)
+
+    // Filter the list of Todos here before passing down to components to reduce complexity
+    const todosForDisplay = todos.filter(todo => {
+        if (displayOptions.hideComplete && todo.complete) return false
+        if (displayOptions.hideDeleted && todo.deleted) return false
+        return true
+    })
 
     return <>
         <HeaderBar />
@@ -69,11 +77,9 @@ const App = () => {
             progress={progressBarValue}
         />
         <TodoList
-            todos={todos}
+            todos={todosForDisplay}
             markTodoComplete={markTodoComplete}
             deleteTodo={deleteTodo}
-            hideComplete={displayOptions.hideComplete}
-            hideDeleted={displayOptions.hideDeleted}
         />
         <NewTodoForm
             newTodoTitle={newTodoTitle}

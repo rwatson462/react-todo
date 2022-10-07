@@ -1,14 +1,10 @@
 import TodoItem from "./TodoItem"
 
-const TodoList = ({todos, markTodoComplete, deleteTodo, hideComplete, hideDeleted}) => {
+const TodoList = ({todos, markTodoComplete, deleteTodo}) => {
     return (
         <section>
             <ul>
-                {todos.filter(todo => {
-                    if (hideDeleted && todo.deleted) return false;
-                    if (hideComplete && todo.complete) return false;
-                    return true;
-                }).map((todo,key) => (
+                {todos.map((todo,key) => (
                     <TodoItem todo={todo} key={key} markTodoComplete={markTodoComplete} deleteTodo={deleteTodo} />
                 ))}
             </ul>

@@ -1,4 +1,3 @@
-import { useState } from "react"
 import Checkbox from "./Checkbox"
 
 const NavBar = ({hideComplete, toggleHideComplete, hideDeleted, toggleHideDeleted}) => {
