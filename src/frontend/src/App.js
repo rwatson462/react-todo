@@ -1,12 +1,12 @@
 import {useReducer, useState} from 'react'
-import TodoRepository, { Todo } from './Repository/TodoRepository'
-import useRepository from './Repository/useRepository'
+import Todo from './Models/Todo'
 import HeaderBar from './Components/HeaderBar'
 import TodoList from './Components/TodoList'
-import {TodoReducerBuilder} from './Hooks/TodoReducer'
 import NewTodoForm from './Components/NewTodoForm'
 import NavBar from './Components/NavBar'
 import ProgressBar from './Components/ProgressBar'
+import TodoReducer from './Components/Reducers/TodoReducer'
+import useLocalStorage from './Hooks/useLocalStorage'
 
 const App = () => {
     const [displayOptions, setDisplayOptions] = useState({
@@ -14,11 +14,10 @@ const App = () => {
         hideDeleted: false
     })
 
-    const todoRepository = useRepository(TodoRepository)
+    // We only need the getting here to pipe into our Reducer
+    const [getStoredTodos,] = useLocalStorage('todos', [])
 
-    const [todos, todoDispatcher] = useReducer(TodoReducerBuilder(todoRepository), [], todoRepository.getAll)
-
-    const [newTodoTitle, setNewTodoTitle] = useState('')
+    const [todos, todoDispatcher] = useReducer(TodoReducer, [], getStoredTodos)
 
     const updateDisplayOptions = (option) => {
         setDisplayOptions({
@@ -27,14 +26,11 @@ const App = () => {
         })
     }
 
-    const createNewTodo = (e) => {
-        // this is triggered from a form submit, so we want to stop the actual form submission
-        e.preventDefault()
-        todoDispatcher({
-            action:'add',
-            payload: Todo(newTodoTitle)
+    const createNewTodo = (todoTitle) => {
+        const newTodos = todoDispatcher({
+            action: 'add',
+            payload: Todo(todoTitle)
         })
-        setNewTodoTitle('')
     }
 
     const markTodoComplete = (todoId) => {
@@ -82,8 +78,6 @@ const App = () => {
             deleteTodo={deleteTodo}
         />
         <NewTodoForm
-            newTodoTitle={newTodoTitle}
-            setNewTodoTitle={setNewTodoTitle}
             createNewTodo={createNewTodo}
         />
     </>

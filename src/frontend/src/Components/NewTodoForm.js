@@ -1,9 +1,20 @@
+import { useState } from "react"
+import PlusIcon from "./Icons/PlusIcon"
 
-const NewTodoForm = ({newTodoTitle, setNewTodoTitle, createNewTodo}) => {
+const NewTodoForm = ({createNewTodo}) => {
+
+    const [newTodoTitle, setNewTodoTitle] = useState('')
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+        createNewTodo(newTodoTitle)
+        setNewTodoTitle('')
+    }
+
     return (
-        <form>
+        <form onSubmit={onSubmit}>
             <input placeholder="Add your todo here..." type="text" value={newTodoTitle} onChange={e => setNewTodoTitle(e.currentTarget.value)} />
-            <button type="submit" onClick={createNewTodo}>Create</button>
+            <button type="submit"><PlusIcon /></button>
         </form>
     )
 }
