@@ -7,8 +7,11 @@ const NewTodoForm = ({createNewTodo}) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        createNewTodo(newTodoTitle)
         setNewTodoTitle('')
+        if (newTodoTitle.trim().length === 0) {
+            return
+        }
+        createNewTodo(newTodoTitle)
     }
 
     return (
