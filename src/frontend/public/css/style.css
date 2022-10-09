@@ -2,14 +2,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
 
 :root {
+    /* light theme colours */
     --success: #00f;
+    --body-color: #fff;
+    --border-color: #eee;
+    --shadow-color: #ddd;
+    --text-color: #000;
+    --button-color: #fafafa;
+    --button-color-dark: #f4f4f4;
+}
+
+/* dark theme colours */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --body-color: #000;
+        --border-color: #333;
+        --shadow-color: #111;
+        --text-color: #eee;
+        --button-color: #080808;
+        --button-color-dark: #040404;
+        --success: #6699cc;
+    }
 }
 
 html {
     font-size: 16px;
+    background-color: var(--body-color);
+    color: var(--text-color);
 }
 
 body, input, button {
+    color: var(--text-color);
     font-size: 1rem;
     font-family: 'Montserrat';
 }
@@ -21,9 +44,9 @@ h1,h2,h3,h4,h5,h6 {
 body {
     width: 700px;
     margin: 5rem auto 0 auto;
-    border: 5px solid #eee;
+    border: 5px solid var(--border-color);
     border-radius: 1rem;
-    box-shadow: 0.5rem 0.5rem #ddd;
+    box-shadow: 0.5rem 0.5rem var(--shadow-color);
 }
 
 h1 {
@@ -40,7 +63,7 @@ section, nav {
 }
 
 nav {
-    background-color: #eee;
+    background-color: var(--border-color);
     margin: 1rem -1px;
     user-select: none;
 }
@@ -60,7 +83,7 @@ section ul li {
 }
 
 section ul li:hover {
-    background-color: #eee;
+    background-color: var(--border-color);
     border-radius: 0.25rem;
 }
 
@@ -96,34 +119,34 @@ form {
     display: flex;
     column-gap: 1rem;
     justify-content: space-between;
-    border-top: 5px solid #eee;
+    border-top: 5px solid var(--border-color);
     padding: 2rem;
     margin: 0 -1px;
 }
 
-form>* {
+form>input {
     flex-grow: 1;
 }
 
 input, button {
-    border: 1px solid #ccc;
+    border: 1px solid var(--shadow-color);
     border-radius: 0.25rem;
     padding: 0.25rem 0.5rem;
-    background-color: #fafafa;
+    background-color: var(--button-color);
     outline: none;
 }
 
 input:focus, button:active {
-    background-color: #eee;
+    background-color: var(--shadow-color);
 }
 
 input:hover, button:hover {
-    background-color: #f4f4f4;
+    background-color: var(--button-color-dark);
 }
 
 button {
     cursor: pointer;
-    box-shadow: 2px 2px #ddd;
+    box-shadow: 2px 2px var(--shadow-color);
 }
 button:active {
     transform: translate(2px, 2px);
