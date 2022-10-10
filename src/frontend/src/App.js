@@ -8,7 +8,8 @@ import TodoList from './Components/TodoList'
 
 const App = () => {
     const {
-        displayOptions, updateDisplayOptions,
+        displayOptions,
+        updateDisplayOptions,
         todos,
         createNewTodo,
         markTodoComplete,

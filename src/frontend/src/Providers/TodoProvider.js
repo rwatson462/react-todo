@@ -21,7 +21,7 @@ const TodoProvider = ({children, ...props}) => {
         })
     }
 
-    // We only need the getting here to pipe into our Reducer
+    // We only need the getter here to pipe into our Reducer
     const [getStoredTodos,] = useLocalStorage('todos', [])
 
     const [todos, todoDispatcher] = useReducer(TodoReducer, [], getStoredTodos)
