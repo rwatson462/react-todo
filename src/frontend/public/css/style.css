@@ -4,6 +4,7 @@
 :root {
     /* light theme colours */
     --success: #00f;
+    --danger: #f00;
     --body-color: #fff;
     --border-color: #eee;
     --shadow-color: #ddd;
@@ -21,7 +22,8 @@
         --text-color: #eee;
         --button-color: #080808;
         --button-color-dark: #040404;
-        --success: #6699cc;
+        --success: #69c;
+        --danger: #f80;
     }
 }
 
@@ -97,7 +99,7 @@ nav ul {
     flex-grow: 1;
 }
 
-.checkbox, .todo-delete {
+.checkbox, .todo-delete, .todo-delete-hard {
     cursor: pointer;
 }
 
@@ -110,9 +112,15 @@ li.deleted {
 li.complete {
     opacity: 0.5;
 }
+li.deleted:hover, li.complete:hover {
+    opacity: 1;
+}
 
 li.todo-item .checkbox .fa-check-square {
     color: var(--success);
+}
+li.todo-item .todo-delete, li.todo-item .todo-delete-hard {
+    color: var(--danger);
 }
 
 form {
