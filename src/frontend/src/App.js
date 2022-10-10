@@ -5,7 +5,7 @@ import TodoList from './Components/TodoList'
 import NewTodoForm from './Components/NewTodoForm'
 import NavBar from './Components/NavBar'
 import ProgressBar from './Components/ProgressBar'
-import TodoReducer from './Components/Reducers/TodoReducer'
+import TodoReducer from './Reducers/TodoReducer'
 import useLocalStorage from './Hooks/useLocalStorage'
 
 const App = () => {

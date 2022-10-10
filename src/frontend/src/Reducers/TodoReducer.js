@@ -1,4 +1,4 @@
-import useLocalStorage from "../../Hooks/useLocalStorage"
+import useLocalStorage from "../Hooks/useLocalStorage"
 
 const CloneTodo = ({name, complete, deleted, id}) => {
     return {
