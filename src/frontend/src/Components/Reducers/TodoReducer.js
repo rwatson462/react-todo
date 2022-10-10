@@ -62,8 +62,14 @@ const TodoReducer = (todos,command) => {
             return newTodos
         }
 
+        case 'hardDelete':
+            todos = todos.filter(todo => todo.id !== command.payload)
+            const newTodos = [...todos]
+            storeTodos(newTodos)
+            return newTodos
+
         default:
-            throw new Error('Invalid action given to TodoReducer')
+            throw new Error(`Invalid action given to TodoReducer: ${command.action}`)
     }
 }
 

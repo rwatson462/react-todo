@@ -47,6 +47,13 @@ const App = () => {
         })
     }
 
+    const hardDeleteTodo = (todoId) => {
+        todoDispatcher({
+            action: 'hardDelete',
+            payload: todoId
+        })
+    }
+
     // maximum value of the progres bar is the total number of non-deleted Todos
     const progressBarMax = todos.reduce((count, todo) => count + (!todo.deleted ? 1 : 0), 0)
 
@@ -76,6 +83,7 @@ const App = () => {
             todos={todosForDisplay}
             markTodoComplete={markTodoComplete}
             deleteTodo={deleteTodo}
+            hardDeleteTodo={hardDeleteTodo}
         />
         <NewTodoForm
             createNewTodo={createNewTodo}

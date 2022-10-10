@@ -1,15 +1,19 @@
 import TodoItem from "./TodoItem"
 
-const TodoList = ({todos, markTodoComplete, deleteTodo}) => {
-    return (
-        <section>
-            <ul>
-                {todos.map((todo,key) => (
-                    <TodoItem todo={todo} key={key} markTodoComplete={markTodoComplete} deleteTodo={deleteTodo} />
-                ))}
-            </ul>
-        </section>
-    )
-}
+const TodoList = ({todos, markTodoComplete, deleteTodo, hardDeleteTodo}) => (
+    <section>
+        <ul>
+            {todos.map((todo,key) => (
+                <TodoItem
+                    key={key}
+                    todo={todo}
+                    markTodoComplete={markTodoComplete}
+                    deleteTodo={deleteTodo}
+                    hardDeleteTodo={hardDeleteTodo}
+                />
+            ))}
+        </ul>
+    </section>
+)
 
 export default TodoList
