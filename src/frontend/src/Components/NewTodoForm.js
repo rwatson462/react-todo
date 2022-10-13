@@ -1,22 +1,24 @@
-import { useState } from "react"
+import { useRef } from "react"
 import PlusIcon from "./Icons/PlusIcon"
 
 const NewTodoForm = ({createNewTodo}) => {
-
-    const [newTodoTitle, setNewTodoTitle] = useState('')
+    const newTodoTitle = useRef()
 
     const onSubmit = (e) => {
         e.preventDefault()
-        setNewTodoTitle('')
-        if (newTodoTitle.trim().length === 0) {
+
+        const title = newTodoTitle.current.value
+        if (title.trim().length === 0) {
             return
         }
-        createNewTodo(newTodoTitle)
+
+        newTodoTitle.current.value = ''
+        createNewTodo(title)
     }
 
     return (
         <form onSubmit={onSubmit}>
-            <input placeholder="Add your todo here..." type="text" value={newTodoTitle} onChange={e => setNewTodoTitle(e.currentTarget.value)} />
+            <input placeholder="Add your todo here..." type="text" ref={newTodoTitle} />
             <button type="submit"><PlusIcon /></button>
         </form>
     )
